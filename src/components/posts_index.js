@@ -11,23 +11,31 @@ class PostsIndex extends Component {
 
     renderPosts() {
         return _.map(this.props.posts, (post) => {
-            return (<li key={post.id} className="list-group-item">{post.title}</li>)
+            return (
+                <li
+                    key={post.id}
+                    className="list-group-item">
+                    <Link to={`/posts/${post.id}`}>
+                        {post.title}
+                    </Link>
+                </li>)
         });
     }
 
     render() {
         console.log(this.props.posts)
-        return (<div>
-            <div className="text-xs-right">
-                <Link className="btn btn-primary" to="/posts/new">Add a Post</Link>
-            </div>
+        return (
             <div>
-                <h3>Posts</h3>
-                <ul className="list-group">
-                    {this.renderPosts()}
-                </ul>
-            </div>
-        </div>)
+                <div className="text-xs-right">
+                    <Link className="btn btn-primary" to="/posts/new">Add a Post</Link>
+                </div>
+                <div>
+                    <h3>Posts</h3>
+                    <ul className="list-group">
+                        {this.renderPosts()}
+                    </ul>
+                </div>
+            </div>)
     }
 }
 
